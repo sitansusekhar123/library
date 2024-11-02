@@ -163,7 +163,7 @@ Otherwise, type the following:
 cd C:\Users\<Username>\Documents\Assignment\library
 ```
 
-Here, the `<Username>` is the name of the user. It can be `Saksham`.
+Here, the `<Username>` is the name of the user. It may be `saksham` but should check.
 
 4. To run the code, type the following:
 
