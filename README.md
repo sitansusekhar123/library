@@ -154,12 +154,13 @@ pip install mysql-connector-python
 ```bash
 cd Documents
 cd Assignment
+cd library
 ```
 
 Otherwise, type the following:
     
 ```bash
-cd C:\Users\<Username>\Documents\Assignment
+cd C:\Users\<Username>\Documents\Assignment\library
 ```
 
 Here, the `<Username>` is the name of the user. It can be `Saksham`.
