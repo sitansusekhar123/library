@@ -1,98 +1,144 @@
-import argparse
-import sys
 from mysql.connector import Error
 from library import *
+import shlex  # Import shlex module for proper parsing of user input
 
-# Assuming the previous functions are defined above or imported from a separate module
-
-def parse_command(command_input):
-    parser = argparse.ArgumentParser(description="Library Management CLI", prog='')
-    subparsers = parser.add_subparsers(dest="command", help="Library commands")
-
-    # Add book
-    parser_add = subparsers.add_parser("add_book", help="Add a new book to the catalog")
-    parser_add.add_argument("book_name", type=str, help="Name of the book")
-    parser_add.add_argument("author", type=str, help="Author of the book")
-    parser_add.add_argument("year_published", type=int, help="Year of publication")
-    parser_add.add_argument("ISBN", type=str, help="ISBN of the book")
-
-    # Remove book
-    parser_remove = subparsers.add_parser("remove_book", help="Remove a book from the catalog")
-    parser_remove.add_argument("book_name", type=str, help="Name of the book")
-    parser_remove.add_argument("author", type=str, help="Author of the book")
-
-    # Look up books
-    parser_lookup = subparsers.add_parser("look_up_books", help="Look up books")
-    parser_lookup.add_argument("--book_name", type=str, help="Name of the book")
-    parser_lookup.add_argument("--author", type=str, help="Author of the book")
-    parser_lookup.add_argument("--year_published", type=int, help="Year of publication")
-
-    # Check if book is lent
-    parser_lent = subparsers.add_parser("is_book_lent", help="Check if a book is lent out")
-    parser_lent.add_argument("book_id", type=int, help="ID of the book")
-
-    # Get return date
-    parser_return = subparsers.add_parser("get_return_date", help="Get return date for a lent book")
-    parser_return.add_argument("book_id", type=int, help="ID of the book")
-
-    # Get books ordered
-    parser_order = subparsers.add_parser("get_books_ordered", help="Get all books in alphabetical order")
-    parser_order.add_argument("order_by", choices=["name", "author"], help="Order by 'name' or 'author'")
-
-    # Group books by year
-    parser_group = subparsers.add_parser("group_books_by_year", help="Group all books by year of publication")
-
-    # Get borrower details
-    parser_borrowers = subparsers.add_parser("get_borrower_details", help="Get names of borrowers and the books they borrowed")
-
-    # Get return date by book name
-    parser_return_name = subparsers.add_parser("get_return_date_by_name", help="Get return date based on book name")
-    parser_return_name.add_argument("book_name", type=str, help="Name of the book")
-
-    # Check if book is lent by name
-    parser_lent_name = subparsers.add_parser("is_book_lent_by_name", help="Check if a book is lent out by name")
-    parser_lent_name.add_argument("book_name", type=str, help="Name of the book")
-
-    # Parse the input command
-    args = parser.parse_args(command_input)
-    return args
-
-def main():
-    print("Welcome to the Library Management CLI. Type 'quit' to exit.")
-    
+# CLI that runs until 'quit' is entered
+def library_cli():
+    print("Welcome to the Library Management CLI. Type 'help' to see available commands.")
     while True:
-        command_input = input("Enter command: ").strip().split()
-        
-        if command_input[0].lower() == "quit":
+        user_input = input("Enter command: ").strip()
+        if user_input.lower() == 'quit':
             print("Exiting the Library Management CLI.")
             break
-
-        try:
-            args = parse_command(command_input)
-            if args.command == "add_book":
-                add_book(args.book_name, args.author, args.year_published, args.ISBN)
-            elif args.command == "remove_book":
-                remove_book(args.book_name, args.author)
-            elif args.command == "look_up_books":
-                look_up_books(args.book_name, args.author, args.year_published)
-            elif args.command == "is_book_lent":
-                is_book_lent(args.book_id)
-            elif args.command == "get_return_date":
-                get_return_date(args.book_id)
-            elif args.command == "get_books_ordered":
-                get_books_ordered(args.order_by)
-            elif args.command == "group_books_by_year":
+        elif user_input.lower() == 'help':
+            print("""
+Available commands:
+- add_book "book_name" "author" year_published "ISBN" [copies]
+- remove_book "book_name" "author"
+- look_up_books [--book_name="book_name"] [--author="author"] [--year_published=year]
+- search_books "keyword"
+- is_book_lent "book_name"
+- get_return_date "book_name"
+- get_books_ordered order_by
+- group_books_by_year
+- get_borrower_details
+- lend_book "book_name" "borrower_name" "borrowed_date" "due_date"
+- return_book "book_name" "return_date"
+- view_overdue_books "current_date"
+- calculate_fines "current_date" fine_per_day
+- extend_due_date "book_name" "new_due_date"
+- reserve_book "book_name" "reserver_name" "reservation_date"
+- cancel_reservation "book_name" "reserver_name"
+- view_reservations
+- view_book_availability
+- generate_report
+- export_books "filename.csv"
+""")
+        else:
+            # Use shlex.split to properly parse quoted strings
+            try:
+                args = shlex.split(user_input)
+            except ValueError as e:
+                print(f"Error parsing input: {e}")
+                continue
+            if not args:
+                continue
+            command = args[0]
+            if command == 'add_book':
+                if len(args) < 5:
+                    print("Usage: add_book \"book_name\" \"author\" year_published \"ISBN\" [copies]")
+                else:
+                    copies = int(args[5]) if len(args) > 5 else 1
+                    add_book(args[1], args[2], int(args[3]), args[4], copies)
+            elif command == 'remove_book':
+                if len(args) != 3:
+                    print("Usage: remove_book \"book_name\" \"author\"")
+                else:
+                    remove_book(args[1], args[2])
+            elif command == 'look_up_books':
+                kwargs = {}
+                for arg in args[1:]:
+                    if arg.startswith('--book_name='):
+                        kwargs['book_name'] = arg.split('=', 1)[1]
+                    elif arg.startswith('--author='):
+                        kwargs['author'] = arg.split('=', 1)[1]
+                    elif arg.startswith('--year_published='):
+                        kwargs['year_published'] = int(arg.split('=', 1)[1])
+                look_up_books(**kwargs)
+            elif command == 'search_books':
+                if len(args) != 2:
+                    print("Usage: search_books \"keyword\"")
+                else:
+                    search_books(args[1])
+            elif command == 'is_book_lent':
+                if len(args) != 2:
+                    print("Usage: is_book_lent \"book_name\"")
+                else:
+                    is_book_lent(args[1])
+            elif command == 'get_return_date':
+                if len(args) != 2:
+                    print("Usage: get_return_date \"book_name\"")
+                else:
+                    get_return_date(args[1])
+            elif command == 'get_books_ordered':
+                if len(args) != 2:
+                    print("Usage: get_books_ordered order_by")
+                else:
+                    get_books_ordered(order_by=args[1])
+            elif command == 'group_books_by_year':
                 group_books_by_year()
-            elif args.command == "get_borrower_details":
+            elif command == 'get_borrower_details':
                 get_borrower_details()
-            elif args.command == "get_return_date_by_name":
-                get_return_date_by_name(args.book_name)
-            elif args.command == "is_book_lent_by_name":
-                is_book_lent_by_name(args.book_name)
+            elif command == 'lend_book':
+                if len(args) != 5:
+                    print("Usage: lend_book \"book_name\" \"borrower_name\" \"borrowed_date\" \"due_date\"")
+                else:
+                    lend_book(args[1], args[2], args[3], args[4])
+            elif command == 'return_book':
+                if len(args) != 3:
+                    print("Usage: return_book \"book_name\" \"return_date\"")
+                else:
+                    return_book(args[1], args[2])
+            elif command == 'view_overdue_books':
+                if len(args) != 2:
+                    print("Usage: view_overdue_books \"current_date\"")
+                else:
+                    view_overdue_books(args[1])
+            elif command == 'calculate_fines':
+                if len(args) != 3:
+                    print("Usage: calculate_fines \"current_date\" fine_per_day")
+                else:
+                    calculate_fines(args[1], float(args[2]))
+            elif command == 'extend_due_date':
+                if len(args) != 3:
+                    print("Usage: extend_due_date \"book_name\" \"new_due_date\"")
+                else:
+                    extend_due_date(args[1], args[2])
+            elif command == 'reserve_book':
+                if len(args) != 4:
+                    print("Usage: reserve_book \"book_name\" \"reserver_name\" \"reservation_date\"")
+                else:
+                    reserve_book(args[1], args[2], args[3])
+            elif command == 'cancel_reservation':
+                if len(args) != 3:
+                    print("Usage: cancel_reservation \"book_name\" \"reserver_name\"")
+                else:
+                    cancel_reservation(args[1], args[2])
+            elif command == 'view_reservations':
+                view_reservations()
+            elif command == 'view_book_availability':
+                view_book_availability()
+            elif command == 'generate_report':
+                generate_report()
+                
+            elif command == 'export_books':
+                if len(args) != 2:
+                    print("Usage: export_books \"filename.csv\"")
+                else:
+                    export_books_to_csv(args[1])
+                    
             else:
-                print("Unknown command. Type 'quit' to exit or 'help' for options.")
-        except SystemExit:
-            print("Invalid command or arguments. Try again.")
+                print("Unknown command. Type 'help' to see available commands.")
 
 if __name__ == "__main__":
-    main()
+    library_cli()
