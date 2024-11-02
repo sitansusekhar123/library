@@ -24,9 +24,9 @@ Installer must be downloaded to the Downloads folder.
 
 5. In the Authentication Method, select "Use Strong Password Encryption" and click Next.
 
-6. In Accounts and Roles, enter a Root Password. (Remember it) and click Next.
+6. In Accounts and Roles, enter a Root Password. For this example keep the password `mysql`. (Remember it) and click Next.
 
-7. In Accounts and Roles, click Add User. Enter a username and password. Click OK and then Next. Remember the username and password.
+7. In Accounts and Roles, click Add User. Enter a username and password. Keep the username as `mysql_user` and password as `mysql`. Click OK and then Next. Remember the username and password.
 
 8. In Windows Service, keep everything as default and click Next.
 
@@ -124,6 +124,82 @@ Output should be:
 ```
 
 
-## Run PIP
+## Setting up Python
+
+1. Make sure Python is installed. If not, go to [Python Website](https://www.python.org/downloads/) and download the latest version.
+
+2. Open the command prompt and enter the following commands.
+
+```bash
+pip install mysql-connector-python
+```
+
+## Download the Repository
+
+1. Go to the repository and click on the green button "Code" at the top right.
+
+2. Click on "Download ZIP".
+
+3. Copy the ZIP file to a new folder say under `Documents/Assignment`.
+
+4. Extract the ZIP file.
 
 ## Run Code
+1. Open the command prompt `CMD`.
+
+2. See the path: `C:\Users\Username>`. Username is the name of the user.
+
+3. If in the above path, then navigate to the code folder by typing the following:
+    
+```bash
+cd Documents
+cd Assignment
+```
+
+Otherwise, type the following:
+    
+```bash
+cd C:\Users\<Username>\Documents\Assignment
+```
+
+Here, the `<Username>` is the name of the user. It can be `Saksham`.
+
+4. To run the code, type the following:
+
+```bash
+python main.py
+```
+
+5. The code will run and show the following output.
+
+```bash
+Welcome to the Library Management CLI. Type 'help' to see the commands.
+```
+
+6. Enter command: `help`
+Output: 
+
+```bash
+The following commands are available:
+Available commands:
+- add_book "book_name" "author" year_published "ISBN" [copies]
+- remove_book "book_name" "author"
+- look_up_books [--book_name="book_name"] [--author="author"] [--year_published=year]
+- search_books "keyword"
+- is_book_lent "book_name"
+- get_return_date "book_name"
+- get_books_ordered order_by
+- group_books_by_year
+- get_borrower_details
+- lend_book "book_name" "borrower_name" "borrowed_date" "due_date"
+- return_book "book_name" "return_date"
+- view_overdue_books "current_date"
+- calculate_fines "current_date" fine_per_day
+- extend_due_date "book_name" "new_due_date"
+- reserve_book "book_name" "reserver_name" "reservation_date"
+- cancel_reservation "book_name" "reserver_name"
+- view_reservations
+- view_book_availability
+- generate_report
+- export_books "filename.csv"
+```
