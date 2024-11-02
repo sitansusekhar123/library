@@ -87,16 +87,41 @@ SHOW TABLES;
 
 Output should be:
     
-    ```
-    +----------------+
-    | Tables_in_library |
-    +----------------+
-    | books          |
-    | loans          |
-    | reservations   |
-    +----------------+
-    3 rows in set (0.00 sec)
-    ```
+```
++----------------+
+| Tables_in_library |
++----------------+
+| books          |
+| loans          |
+| reservations   |
++----------------+
+3 rows in set (0.00 sec)
+```
+
+5. Lets populate the books table with some data. For this copy paste everything at once in the file `books_data_populate.sql` in the repository.
+
+6. Once done, it should show the following output.
+
+```
+Query OK, 91 rows affected (0.04 sec)
+Records: 91  Duplicates: 0  Warnings: 0
+```
+
+7. To check if the data was populated, enter the following command.
+
+```sql
+SELECT * FROM books;
+```
+
+Output should be:
+
+```
++----+---------------------------------+---------------------+----------------+------------------+--------+
+| id | book_name                       | author              | year_published | ISBN             | copies |
++----+---------------------------------+---------------------+----------------+------------------+--------+
+|  1 | The Great Gatsby                | F. Scott Fitzgerald |          1925  | 9780743273565    |      1 |
+|  2 | To Kill a Mockingbird           | Harper Lee          |          1960  | 9780061120084    |      1 |
+```
 
 
 ## Run PIP
