@@ -26,8 +26,7 @@ CREATE TABLE library.reservations (
     FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
 );
 
--------------------------------------------------- add data
--- Add books data with 10 copies each, duplicates removed
+
 INSERT INTO library.books (book_name, author, year_published, ISBN, copies) VALUES
 ('1984', 'George Orwell', 1949, '9780451524935', 10),
 ('Pride and Prejudice', 'Jane Austen', 1813, '9780141040349', 10),
