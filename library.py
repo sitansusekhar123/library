@@ -7,10 +7,10 @@ import csv
 def connect_to_db():
     try:
         connection = mysql.connector.connect(
-            host='localhost',
+            host='mydb',
             database='library',
             user='root',  # Replace with your MySQL username
-            password='mysql'  # Replace with your MySQL password
+            password='root'  # Replace with your MySQL password
         )
         return connection
     except Error as e:
