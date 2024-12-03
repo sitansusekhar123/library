@@ -189,7 +189,6 @@ Available commands:
 - search_books "keyword"
 - is_book_lent "book_name"
 - get_return_date "book_name"
-- get_books_ordered order_by
 - group_books_by_year
 - get_borrower_details
 - lend_book "book_name" "borrower_name" "borrowed_date" "due_date"
