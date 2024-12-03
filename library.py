@@ -8,10 +8,11 @@ def connect_to_db():
     try:
         connection = mysql.connector.connect(
             host='localhost',
-            port=3307,
+            port=3306,
             database='library',
             user='root',  # Replace with your MySQL username
-            password='mysql'  # Replace with your MySQL password
+            password='mysql',  # Replace with your MySQL password
+            use_pure=True
         )
         return connection
     except Error as e:
