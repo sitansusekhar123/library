@@ -19,7 +19,6 @@ Available commands:
 - search_books "keyword"
 - is_book_lent "book_name"
 - get_return_date "book_name"
-- get_books_ordered order_by
 - group_books_by_year
 - get_borrower_details
 - lend_book "book_name" "borrower_name" "borrowed_date" "due_date"
@@ -80,11 +79,6 @@ Available commands:
                     print("Usage: get_return_date \"book_name\"")
                 else:
                     get_return_date(args[1])
-            elif command == 'get_books_ordered':
-                if len(args) != 2:
-                    print("Usage: get_books_ordered order_by")
-                else:
-                    get_books_ordered(order_by=args[1])
             elif command == 'group_books_by_year':
                 group_books_by_year()
             elif command == 'get_borrower_details':

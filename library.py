@@ -7,10 +7,11 @@ import csv
 def connect_to_db():
     try:
         connection = mysql.connector.connect(
-            host='mydb',
+            host='localhost',
+            port=3307,
             database='library',
             user='root',  # Replace with your MySQL username
-            password='root'  # Replace with your MySQL password
+            password='mysql'  # Replace with your MySQL password
         )
         return connection
     except Error as e:
@@ -150,29 +151,6 @@ def get_return_date(book_name):
             print("No active loan record found for this book.")
     except Error as e:
         print("Failed to get return date:", e)
-    finally:
-        connection.close()
-
-# Function to get all books ordered by name or author
-def get_books_ordered(order_by='name'):
-    connection = connect_to_db()
-    if not connection:
-        return
-    try:
-        cursor = connection.cursor(dictionary=True)
-        if order_by == 'name':
-            query = "SELECT * FROM books ORDER BY book_name ASC"
-        elif order_by == 'author':
-            query = "SELECT * FROM books ORDER BY author ASC"
-        else:
-            print("Invalid order_by value. Use 'name' or 'author'.")
-            return
-        cursor.execute(query)
-        results = cursor.fetchall()
-        for book in results:
-            print(book)
-    except Error as e:
-        print("Failed to get books:", e)
     finally:
         connection.close()
 
@@ -326,7 +304,7 @@ def calculate_fines(current_date_str, fine_per_day):
             days_overdue = (current_date - loan['due_date']).days
             fine = days_overdue * fine_per_day
             total_fines += fine
-            print(f"Borrower: {loan['borrower_name']}, Book: {loan['book_name']}, Fine: ${fine:.2f}")
+            print(f"Borrower: {loan['borrower_name']}, Book: {loan['book_name']}, Fine: Rs. {fine:.2f}")
         print(f"Total Fines: ${total_fines:.2f}")
     except Error as e:
         print("Failed to calculate fines:", e)
