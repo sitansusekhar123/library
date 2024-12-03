@@ -1,0 +1,92 @@
+ID,Book Name,Author,Year Published,ISBN,Copies
+283,1984,George Orwell,1949,9780451524935,10
+284,Pride and Prejudice,Jane Austen,1813,9780141040349,10
+285,The Great Gatsby,F. Scott Fitzgerald,1925,9780743273565,10
+286,The Catcher in the Rye,J.D. Salinger,1951,9780316769488,10
+287,Moby-Dick,Herman Melville,1851,9780142437247,10
+288,War and Peace,Leo Tolstoy,1869,9780199232765,10
+289,The Odyssey,Homer,-700,9780140268867,10
+290,Crime and Punishment,Fyodor Dostoevsky,1866,9780140449136,10
+291,The Brothers Karamazov,Fyodor Dostoevsky,1880,9780374528379,10
+292,Great Expectations,Charles Dickens,1861,9780141439563,10
+293,Jane Eyre,Charlotte Bronte,1847,9780142437209,10
+294,Wuthering Heights,Emily Bronte,1847,9780141439556,10
+295,Frankenstein,Mary Shelley,1818,9780486282114,10
+296,Dracula,Bram Stoker,1897,9780486411095,10
+297,The Divine Comedy,Dante Alighieri,1320,9780142437223,10
+298,Les Miserables,Victor Hugo,1862,9780451419439,10
+299,Anna Karenina,Leo Tolstoy,1877,9780143035008,10
+300,Madame Bovary,Gustave Flaubert,1856,9780140449129,10
+301,The Count of Monte Cristo,Alexandre Dumas,1844,9780140449266,10
+302,The Iliad,Homer,-750,9780140275360,10
+303,Catch-22,Joseph Heller,1961,9781451626650,10
+304,The Hobbit,J.R.R. Tolkien,1937,9780547928227,10
+305,Fahrenheit 451,Ray Bradbury,1953,9781451673319,10
+306,Brave New World,Aldous Huxley,1932,9780060850524,10
+307,Animal Farm,George Orwell,1945,9780451526342,10
+308,Gone with the Wind,Margaret Mitchell,1936,9781451635621,10
+309,The Alchemist,Paulo Coelho,1988,9780061122415,10
+310,Lord of the Flies,William Golding,1954,9780399501487,10
+311,One Hundred Years of Solitude,Gabriel Garcia Marquez,1967,9780060883287,10
+312,Slaughterhouse-Five,Kurt Vonnegut,1969,9780440180296,10
+313,Don Quixote,Miguel de Cervantes,1605,9780060934347,10
+314,Ulysses,James Joyce,1922,9780199535675,10
+315,The Sound and the Fury,William Faulkner,1929,9780679732242,10
+316,Beloved,Toni Morrison,1987,9781400033416,10
+317,Lolita,Vladimir Nabokov,1955,9780679723165,10
+318,The Metamorphosis,Franz Kafka,1915,9780486290300,10
+319,The Stranger,Albert Camus,1942,9780679720201,10
+320,The Grapes of Wrath,John Steinbeck,1939,9780143039433,10
+321,Heart of Darkness,Joseph Conrad,1899,9780141441672,10
+322,Invisible Man,Ralph Ellison,1952,9780679732761,10
+323,On the Road,Jack Kerouac,1957,9780140283297,10
+324,To the Lighthouse,Virginia Woolf,1927,9780156907392,10
+325,A Farewell to Arms,Ernest Hemingway,1929,9780684801469,10
+326,The Sun Also Rises,Ernest Hemingway,1926,9780743297332,10
+327,The Old Man and the Sea,Ernest Hemingway,1952,9780684801223,10
+328,Mrs. Dalloway,Virginia Woolf,1925,9780156628709,10
+329,Sense and Sensibility,Jane Austen,1811,9780141439662,10
+330,Little Women,Louisa May Alcott,1868,9780142408766,10
+331,Rebecca,Daphne du Maurier,1938,9780380730407,10
+332,The Handmaid's Tale,Margaret Atwood,1985,9780385490818,10
+333,The Picture of Dorian Gray,Oscar Wilde,1890,9780141439570,10
+334,A Tale of Two Cities,Charles Dickens,1859,9780141439600,10
+335,David Copperfield,Charles Dickens,1850,9780140439441,10
+336,Middlemarch,George Eliot,1871,9780141439549,10
+337,Oliver Twist,Charles Dickens,1838,9780141439747,10
+338,Gulliver's Travels,Jonathan Swift,1726,9780141439495,10
+339,The Scarlet Letter,Nathaniel Hawthorne,1850,9780142437261,10
+340,The Secret Garden,Frances Hodgson Burnett,1911,9780064401883,10
+341,The Hunchback of Notre-Dame,Victor Hugo,1831,9780140443530,10
+342,The Call of the Wild,Jack London,1903,9780486264720,10
+343,White Fang,Jack London,1906,9780486269688,10
+344,Treasure Island,Robert Louis Stevenson,1883,9780141321004,10
+345,Robinson Crusoe,Daniel Defoe,1719,9780141439829,10
+346,The Three Musketeers,Alexandre Dumas,1844,9780140449273,10
+347,Twenty Thousand Leagues Under the Sea,Jules Verne,1870,9780140432718,10
+348,The Time Machine,H.G. Wells,1895,9780451528551,10
+349,Journey to the Center of the Earth,Jules Verne,1864,9780141441979,10
+350,The War of the Worlds,H.G. Wells,1898,9780451530653,10
+351,Dracula,Bram Stoker,1897,9780142437308,10
+352,The Jungle Book,Rudyard Kipling,1894,9780141325293,10
+353,The Tale of Peter Rabbit,Beatrix Potter,1902,9780723247708,10
+354,Charlotte's Web,E.B. White,1952,9780064400558,10
+355,Alice's Adventures in Wonderland,Lewis Carroll,1865,9780141321073,10
+356,The Wonderful Wizard of Oz,L. Frank Baum,1900,9780486291160,10
+357,Anne of Green Gables,L.M. Montgomery,1908,9780141321592,10
+358,The Wind in the Willows,Kenneth Grahame,1908,9780141321134,10
+359,Peter Pan,J.M. Barrie,1911,9780141322575,10
+360,Black Beauty,Anna Sewell,1877,9780141321035,10
+361,Heidi,Johanna Spyri,1881,9780141322568,10
+362,The Secret of Chimneys,Agatha Christie,1925,9780007119297,10
+363,Persuasion,Jane Austen,1817,9780141439683,10
+364,Northanger Abbey,Jane Austen,1818,9780141439799,10
+365,Emma,Jane Austen,1815,9780141439584,10
+366,Mansfield Park,Jane Austen,1814,9780141439805,10
+367,Love in the Time of Cholera,Gabriel Garcia Marquez,1985,9780307389732,10
+368,The Kite Runner,Khaled Hosseini,2003,9781594631931,10
+369,A Thousand Splendid Suns,Khaled Hosseini,2007,9781594483851,10
+370,The Road,Cormac McCarthy,2006,9780307387899,10
+371,Life of Pi,Yann Martel,2001,9780156027328,10
+372,The Book Thief,Markus Zusak,2005,9780375842207,10
+373,The Girl with the Dragon Tattoo,Stieg Larsson,2005,9780307454546,10

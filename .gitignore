@@ -1,5 +1,4 @@
 __pycache__/
 sql_notes.txt
-*.csv
 *.ipynb
 .ipynb_checkpoints/
